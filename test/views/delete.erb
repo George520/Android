@@ -1,0 +1,21 @@
+<html>
+  <head>
+    <title> 删除留言 </title>
+  </head>
+  <body>
+    <% if @num.to_i > 0 && @num.to_i <= $maxId %>
+      <% if @user[@num.to_i].getMessage.eql?("\n") %>
+        The message is empty,failed to delete!
+      <% else %>
+        Succeed to delete message!
+        <% @user[@num.to_i].setMessage = "\n" %>
+        <% saveData() %>
+      <% end %>
+    <% else %>
+      Please input valid id!
+    <% end %>
+    <br><a href = "/" >
+      Back
+    </a>
+  </body>
+</html>

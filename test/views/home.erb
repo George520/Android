@@ -1,0 +1,117 @@
+<html>
+  <head>
+    <title> 留言板 </title>
+  </head>
+  <body>
+    <ul>
+      <table>
+        <tr>
+        <th>id</th>
+        <th>author</th>
+        <th>time</th>
+        <th>message</th>
+        </tr>
+        <% if @id.to_s.empty? && @author.to_s.empty? %> <%# 如果@id和@author都为空则全部显示 %>
+        <% (0...$maxId).each do |i| %>
+          <tr>
+            <td>
+              <%= @user[i].getId %>
+            </td>
+            <td>
+              <%= @user[i].getAuthor %>
+            </td>
+            <td>
+              <%= @user[i].getTime %>
+            </td>
+            <td>
+              <%= @user[i].getMessage %>
+            </td>
+            <td>
+              <form action = "/delete/<%= i %>",method = "post"> <!-- 删除 -->
+                <br><input type = "submit" value = "delete" /> <%# 尖括号与空格 %>
+              </form>
+            </td>
+          </tr>
+        <% end %>
+      <% elsif !@id.to_s.empty? && @author.to_s.empty? %> <%# 如果@id非空 %>
+        <% boo = true %>
+        <% (0...$maxId).each do |i|
+          if @user[i].getId.to_i == @id.to_i
+            $temp = i
+            boo = false
+        break
+        end
+      %>
+  <% end %>
+  <% if boo == false %>
+        <tr>
+          <td>
+            <%= @user[$temp].getId %>
+          </td>
+          <td>
+            <%= @user[$temp].getAuthor %>
+          </td>
+          <td>
+            <%= @user[$temp].getTime %>
+          </td>
+          <td>
+            <%= @user[$temp].getMessage %>
+          </td>
+          <td>
+            <form action = "/delete/<%= @id.to_i %>",method = "post">
+              <br><input type = "submit" value = "delete" /> <%# 尖括号与空格 %>
+            </form>
+          </td>
+        </tr>
+      <% else %>
+        Please input valid id!
+      <% end %>
+    <% elsif @id.to_s.empty? && !@author.to_s.empty? %> <% #如果@author非空 %>
+        <% boo = true %>
+        <% for i in (0...$maxId) %>
+          <% if @user[i].getAuthor.to_s.strip.eql?(@author.to_s.strip) %>
+          <tr>
+            <td>
+              <%= @user[i].getId %>
+            </td>
+            <td>
+              <%= @user[i].getAuthor %>
+            </td>
+            <td>
+              <%= @user[i].getTime %>
+            </td>
+            <td>
+              <%= @user[i].getMessage %>
+            </td>
+            <td>
+              <form action = "/delete/<%= i %>",method = "post">
+                <br><input type = "submit" value = "delete" /> <%# 尖括号与空格 %>
+              </form>
+            </td>
+          </tr>
+          <% boo = false %>
+          <% break %>
+        <% else %>
+          <% next %>
+        <% end %>
+      <% end %>
+      <% if boo == true %>
+        Not Found!
+      <% end %>
+    <% else %> <%# 如果@id和@author非空 %>
+        Don't input two value!
+    <% end %>
+      </table>
+      <br> Search Message
+      <br><form action = "/", method = "get">
+        <br>Input id:<input type =  "text" name = "id" />
+        <br>Input author:<input type = "text" name = "author" />
+        <br><input type = "submit" value = "Submit" /> </form>
+      <br> Edit Message
+      <br><form action = "/" method = "get">
+        <br>Input id:<input type = "text" name = "editId" />
+        <br>Input Message:<input type = "text" name = "editMessage" />
+        <br><input type = "submit" value = "Submit" /> </form>
+    </ul>
+</body>
+</html>
