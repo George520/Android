@@ -66,7 +66,7 @@
       <% else %>
         Please input valid id!
       <% end %>
-    <% elsif @id.to_s.empty? && !@author.to_s.empty? %> <% #如果@author非空 %>
+    <% elsif @id.to_s.empty? && !@author.to_s.empty? %> <%# 如果@author非空 %>
         <% boo = true %>
         <% for i in (0...$maxId) %>
           <% if @user[i].getAuthor.to_s.strip.eql?(@author.to_s.strip) %>
