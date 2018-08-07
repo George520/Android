@@ -1,0 +1,16 @@
+<html>
+<title> 注册 </title>
+<center>
+<h3> Sign Up </h3>
+<% if @error %>
+<b><%=@error%></b>
+<% end %>
+  <form action = '/signup' method="post">
+    username:<input type = "text" name = "username" /><br>
+    password:<input type = "password" name = "password" /><br>
+    <input type = "submit" value="submit" />
+  </form>
+  <p>Already have an account?</p>
+  <a href="/login">login</a>
+</center>
+</html>

@@ -1,0 +1,40 @@
+<html>
+<title> 留言板 </title>
+<center>
+	<br><br><br><br><br>
+	<h3>Welcome, <%= @user.username %>!</h3>
+	<h4><a href="/home" > Persional Page </a></h4>
+<h3>All Messages</h3>
+	<table>
+		<thead>
+			<tr>
+				<th>user_id</th>
+				<th>username</th>
+				<th>created_at</th>
+				<th>content</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @messages.reverse_each do |message| %>
+			<tr>
+				<td><%= message.user_id %></td>
+				<td><%= User.find(message.user_id).username %></td>
+				<td><%= message.created_at %></td>
+				<td><%= message.content %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<p>Search message<p>
+		<form action = "/search" method = "post">
+			input user_id:<input type = "text" name = "user_id"/><br>
+			input username:<input type = "text" name = "username"/><br>
+			<input type = "submit" type = "submit"/>
+		</form>
+		<p>Add message</p>
+		<form action = "/add" method = "post">
+			input content:<input type="text" name = "content"/><br>
+			<input type="submit" value="submit"/>
+		</form>
+</center>
+</html>

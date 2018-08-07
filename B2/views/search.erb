@@ -1,0 +1,36 @@
+<html>
+<title> 查询 </title>
+<center>
+  <% if @notice %>
+  <br><br><br><br><br>
+  <h1><%= @notice %></h1>
+  <h1>after 2s,back to index page</h1>
+  <meta http-equiv="refresh" content="2;url=/" />
+  <% else %>
+  <br><br><br><br><br>
+  <h3>user_id:<%= @user_id %></h3>
+  <h3>username:<%= User.find(@user_id).username %></h3><br>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>created_at</th>
+        <th>content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% i = 1 %>
+      <% User.find(@user_id).message.all.reverse_each do |message| %>
+      <tr>
+        <td><%= i %></td>
+        <td><%= message.created_at %></td>
+        <td><%= message.content %></td>
+        <% i += 1 %>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+  <h3><a href = '/'>back</a></h3>
+</center>
+</html>

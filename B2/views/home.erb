@@ -1,0 +1,40 @@
+<html>
+<title> 个人页面 </title>
+<center>
+  <br><br><br>
+  <h3>your user_id:<%= @user_id %></h3>
+  <h3>your username:<%= User.find(@user_id).username %></h3>
+  <h4><a href = '/username'>modify username</a></h4>
+  <h4><a href = '/password'>modify password</a></h4>
+  <h3>your messages</h3><br>
+  <table>
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>created_at</th>
+        <th>content</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% i = 1 %>
+      <% Message.all.reverse_each do |message| %>
+      <% if message.user_id.to_i == @user_id.to_i %>
+      <tr>
+        <td><%= i %></td>
+        <td><%= message.created_at %></td>
+        <td><%= message.content %></td>
+        <td><form action="/delete/<%= message.id %>" method="post">
+          <br><input type="submit" value="delete"/>
+        </form></td>
+        <td><form action="/edit/<%= message.id %>" method="get">
+          <br><input type="submit" value="edit"/>
+        </form></td>
+        <% i += 1 %>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <h3><a href = '/'>back</a></h3>
+</center>
+</html>
