@@ -3,6 +3,7 @@ require 'sinatra/activerecord' # 可能需要下载
 require 'bcrypt'
 require './models/message'
 require './models/user'
+require 'pry'
 enable :sessions
 
 get '/' do
@@ -53,6 +54,11 @@ post '/login' do
     session['notice'] = "Incorrect username or password"
     redirect '/login'
   end
+end
+
+get '/logout' do
+  session['id'] = nil
+  redirect '/login'
 end
 
 get '/add' do

@@ -1,11 +1,10 @@
-<html>
 <title> 登录 </title>
 <center>
-  <br><br><br><br><br><br><br><br><br><br><br><br>
+  <% if @notice %>
+  <meta http-equiv="refresh" content="2;url=/signup" />
+  <% else %>
+  <br><br><br><br><br>
 <h3> Login In </h3>
-<% if @notice %>
-<b><%= @notice %></b>
-  <% end %>
   <form action = '/login' method="post">
     username:<input type = "text" name = "username"/><br>
     password:<input type = "password" name = "password"/><br>
@@ -13,5 +12,5 @@
     <p>Don't have an account yet?</p>
     <a href="/signup">signup</a>
   </form>
+  <% end %>
 </center>
-</html>

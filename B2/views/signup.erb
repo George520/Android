@@ -1,10 +1,10 @@
-<html>
 <title> 注册 </title>
 <center>
+  <% if @notice %>
+  <meta http-equiv="refresh" content="2;url=/signup" />
+  <% else %>
+  <br><br><br><br><br>
 <h3> Sign Up </h3>
-<% if @error %>
-<b><%=@error%></b>
-<% end %>
   <form action = '/signup' method="post">
     username:<input type = "text" name = "username" /><br>
     password:<input type = "password" name = "password" /><br>
@@ -12,5 +12,5 @@
   </form>
   <p>Already have an account?</p>
   <a href="/login">login</a>
+  <% end %>
 </center>
-</html>
