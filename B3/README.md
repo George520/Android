@@ -42,7 +42,7 @@
 外键：admin_id, user_id <br>
 索引：id <br>
 关联表：has_many :comments <br>
-"&nbsp;" belongs_to :admins, users <br>
+&nbsp;&nbsp;&nbsp; belongs_to :admins, users <br>
 
 ## 4.留言表comments
 
