@@ -35,7 +35,7 @@
 | admin_id | int | 管理员ID | 无 |
 | title | string | 文章题目 | 长度不小于3 |
 | body | text | 文章内容 | 长度不小于100 |
-| post_check | int | 文章审核 | 值为0或1 |
+| post_check | bool | 文章审核 | 值为true或false |
 | created_at | date | 创建日期 | 无 |
 
 主键：id <br>
@@ -52,7 +52,7 @@
 | user_id | int | 用户ID | 无 |
 | post_id | int | 文章ID | 无 |
 | messsage | text | 留言内容 | 长度不小于3 |
-| comment_check | int | 留言审核 | 值为0或1 |
+| comment_check | bool | 留言审核 | 值为true或false |
 | created_at | date | 创建日期 | 无 |
 
 主键：id <br>
