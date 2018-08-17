@@ -72,6 +72,6 @@
 主键：id <br>
 外键：user_id <br>
 索引：id <br>
-关联表：belongs_to :user <br>
+关联表：belongs_to :users <br>
 
 
