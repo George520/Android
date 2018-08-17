@@ -35,6 +35,7 @@
 | admin_id | int | 管理员ID | 无 |
 | title | string | 文章题目 | 长度不小于3 |
 | body | text | 文章内容 | 长度不小于100 |
+| tag | string | 文章标签 | 无 |
 | post_check | bool | 文章审核 | 值为true或false |
 | created_at | date | 创建日期 | 无 |
 
