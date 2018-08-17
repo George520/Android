@@ -36,7 +36,7 @@
 | title | string | 文章题目 | 长度不小于3 |
 | body | text | 文章内容 | 长度不小于100 |
 | tag | string | 文章标签 | 非空 |
-| post_check | bool | 文章审核 | 值为true或false |
+| post_check | boolean | 文章审核 | 值为true或false |
 | created_at | date | 创建日期 | 无 |
 
 主键：id <br>
@@ -53,7 +53,7 @@
 | user_id | int | 用户ID | 无 |
 | post_id | int | 文章ID | 无 |
 | messsage | text | 留言内容 | 长度不小于3 |
-| comment_check | bool | 留言审核 | 值为true或false |
+| comment_check | boolean | 留言审核 | 值为true或false |
 | created_at | date | 创建日期 | 无 |
 
 主键：id <br>
