@@ -18,7 +18,7 @@
 | :-: | :-: | :-: | :-: |
 | id | int | 用户ID | 无 |
 | username | string | 用户名 | 非空,唯一性,长度范围:[3,20] |
-| Email | string | 邮件地址 | 符合格式xxx@xxx.com的要求 |
+| email | string | 邮件地址 | 符合格式xxx@xxx.com的要求 |
 | password | string | 密码 | 非空,只允许用以下字符:a-z,0-9,!@#$%^&*() |
 
 主键：id <br>
@@ -35,7 +35,7 @@
 | admin_id | int | 管理员ID | 无 |
 | title | string | 文章题目 | 长度不小于3 |
 | body | text | 文章内容 | 长度不小于100 |
-| tag | string | 文章标签 | 非空 |
+| categories | string | 文章分类 | 非空 |
 | post_check | boolean | 文章审核 | 值为true或false |
 | created_at | date | 创建日期 | 无 |
 
