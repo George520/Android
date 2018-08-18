@@ -41,7 +41,7 @@
 
 主键：id <br>
 外键：admin_id, user_id <br>
-索引：id <br>
+索引：id, admin_id, user_id <br>
 关联表：has_many :comments <br>
 &#8195;&#8195;&#8195;&#8195;belongs_to :admins, users <br>
 
@@ -58,7 +58,7 @@
 
 主键：id <br>
 外键：post_id, user_id <br>
-索引：id <br>
+索引：id, post_id, user_id <br>
 关联表：belongs_to :posts, users <br>
 
 ## 5.反馈表feedbacks
@@ -71,7 +71,7 @@
 
 主键：id <br>
 外键：user_id <br>
-索引：id <br>
+索引：id, user_id <br>
 关联表：belongs_to :users <br>
 
 
