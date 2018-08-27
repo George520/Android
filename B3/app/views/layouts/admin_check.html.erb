@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>审核系统</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <header class="navbar">
+    <div class="navbar navbar-light" style="background-color: #e3f2fd;text-align: center;">
+    <div class="container">
+      <ul class="nav nav-pills" style="display: inline-block;float: none;">
+        <li class="active"><%=link_to'文章审核', check_index_path %></li>
+        <li><%=link_to'留言审核', comments_path%></li>
+        <li><%=link_to'意见反馈', feedbacks_path%></li>
+
+        <li class="dropdown">
+      		<a class="dropdown-toggle" data-toggle="dropdown" href="#">
+      			<span class="caret"></span>
+      		</a>
+      		<ul class="dropdown-menu">
+            <li><%=link_to'个人中心', my_check_path %></li>
+            <li><%= link_to '退出登录', user_logout_path, method: :delete %>
+      		</ul>
+      	</li>
+        </ul>
+      </div>
+     </div>
+     </header>
+  </head>
+  <body><div class="container">
+    <div class="col-md-4" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;>
+    </div>
+    <div class="col-md-8" box-shadow: inset 1px -1px 1px #444, inset -1px 1px 1px #444;>
+    <%= yield %></div>
+  </body>
+  </html>

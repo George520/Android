@@ -1,0 +1,40 @@
+<div class="container"style="padding: 200px 300px 100px;">
+	<div class="jumbotron">
+    <center><h3><%= @notice %></h3></center>
+    <center><h4>欢迎来到博客系统</h4></center>
+<%= form_for(:user, url: user_register_path) do |form| %>
+<div class="field">
+  <center>
+  <%= form.label :用户名 %><br>
+  <%= form.text_field :username %><br>
+</center>
+</div>
+<br>
+<div class="field">
+  <center>
+  <%= form.label :邮箱 %><br>
+  <%= form.text_field :email %><br>
+</center>
+</div>
+<br>
+<div class="field">
+  <center>
+  <%= form.label :密码 %><br>
+  <%= form.password_field :password %>
+</center>
+</div>
+<br>
+<div class="actions">
+  <center>
+  <%= form.submit "注册" %>
+</center>
+</div>
+<br>
+<div class="field">
+  <center>
+  <%= link_to '登录', user_login_path %>
+</center>
+</div>
+<% end %>
+</div>
+</div>

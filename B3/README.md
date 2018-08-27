@@ -18,7 +18,7 @@
 | :-: | :-: | :-: | :-: |
 | id | int | 用户ID | 无 |
 | username | string | 用户名 | 非空,唯一性,长度范围:[3,20] |
-| Email | string | 邮件地址 | 符合格式xxx@xxx.com的要求 |
+| email | string | 邮件地址 | 符合格式xxx@xxx.com的要求 |
 | password | string | 密码 | 非空,只允许用以下字符:a-z,0-9,!@#$%^&*() |
 
 主键：id <br>
@@ -35,14 +35,15 @@
 | admin_id | int | 管理员ID | 无 |
 | title | string | 文章题目 | 长度不小于3 |
 | body | text | 文章内容 | 长度不小于100 |
-| post_check | int | 文章审核 | 值为0或1 |
+| categories | string | 文章分类 | 非空 |
+| post_check | boolean | 文章审核 | 值为true或false |
 | created_at | date | 创建日期 | 无 |
 
 主键：id <br>
 外键：admin_id, user_id <br>
-索引：id <br>
+索引：id, admin_id, user_id <br>
 关联表：has_many :comments <br>
-       belongs_to :admins, users <br>
+&#8195;&#8195;&#8195;&#8195;belongs_to :admins, users <br>
 
 ## 4.留言表comments
 
@@ -52,12 +53,12 @@
 | user_id | int | 用户ID | 无 |
 | post_id | int | 文章ID | 无 |
 | messsage | text | 留言内容 | 长度不小于3 |
-| comment_check | int | 留言审核 | 值为0或1 |
+| comment_check | boolean | 留言审核 | 值为true或false |
 | created_at | date | 创建日期 | 无 |
 
 主键：id <br>
 外键：post_id, user_id <br>
-索引：id <br>
+索引：id, post_id, user_id <br>
 关联表：belongs_to :posts, users <br>
 
 ## 5.反馈表feedbacks
@@ -70,7 +71,7 @@
 
 主键：id <br>
 外键：user_id <br>
-索引：id <br>
-关联表：belongs_to :user <br>
+索引：id, user_id <br>
+关联表：belongs_to :users <br>
 
 

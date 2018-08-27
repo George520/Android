@@ -1,0 +1,28 @@
+<h3>欢迎 <%= @username %></h3>
+<table width="100%"; style="table-layout: fixed;">
+  <thead>
+    <tr>
+      <th>作者</th>
+      <th>标题</th>
+      <th>内容</th>
+      <th>分类</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.postable.username %></td>
+        <td><%= post.title %></td>
+        <div class="innerCtn">
+<span class="mui-ellipsis-3"><p><td style="white-space:nowrap;overflow: hidden;text-overflow:ellipsis"><%= post.body %></td></span>
+</p></div>
+
+        <td><%= post.categories %></td>
+        <td><%= link_to '阅读全文', post %></td>
+      </tr>
+    <% end %>
+    <%= will_paginate @posts %>
+  </tbody>
+</table>
