@@ -19,7 +19,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments.where(comment_check: true)
-    @user = User.find(session[:user_id])
   end
 
   def new
