@@ -35,6 +35,6 @@
 <br>
 <h3>评论区</h3>
 <% @comments.each do |comment| %>
-<b>用户<%= @user.username %>:</b><%= comment.message %><br>
+<b>用户<%= User.find(comment.user_id).username %>:</b><%= comment.message %><br>
 <% end %>
 <br><br><br><br><br><br>
