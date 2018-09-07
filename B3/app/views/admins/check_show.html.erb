@@ -1,0 +1,40 @@
+<p>
+  <h1><%= @post.title %></h1>
+</p>
+
+<p>
+  <h4><strong>作者:</strong>
+  <%= @post.postable.username %></h4>
+</p>
+
+<p>
+  <%= sanitize @post.body %>
+</p>
+
+<p>
+  <strong>Categories:</strong>
+  <%= @post.categories %>
+</p>
+
+<%= form_for(:admin, url:check_path) do |f| %>
+<div class="field">
+  <%= f.hidden_field :post_id, :value => @post.id %>
+  <%= f.hidden_field :post_check, :value => true %>
+</div>
+<div class="actions">
+  <%= f.submit "通过" %>
+</div>
+<% end %>
+
+<%= form_for(:admin, url:check_path) do |f| %>
+<div class="field">
+  <%= f.hidden_field :post_id, :value => @post.id %>
+  <%= f.hidden_field :post_check, :value => false %>
+</div>
+<div class="actions">
+  <%= f.submit "不通过" %>
+</div>
+<% end %>
+<br>
+<%= link_to '返回', posts_path %>
+<br><br><br>
